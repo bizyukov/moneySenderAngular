@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container">
+	<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date/Time</th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Balance</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.date*1000 | date: 'MM-dd-yyyy'}}</td>
+        <td>{{transaction.targetUserName}}</td>
+        <td *ngIf="user.id == transaction.targetUserId" class="btn-outline-success">+ ${{transaction.amount}}</td>
+        <td *ngIf="user.id != transaction.targetUserId" class="btn-outline-danger">- ${{transaction.amount}}</td>
+        <td>${{transaction.balance}}</td>
+        <td>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="repeatTransaction(transaction)">Repeat</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

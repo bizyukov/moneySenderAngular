@@ -1,0 +1,62 @@
+<div class="container">
+	<h1>
+		Parrot Wings
+	</h1>
+
+	<h3>Please Sign In or Sign Up</h3>
+	<h6>All fields are required!</h6>
+
+	<div *ngIf="error" class="alert alert-danger" role="alert">
+		{{error}}
+	</div>
+
+	<div class="alert alert-success">
+		<form *ngIf=!isSignUp name="loginForm">
+			<div class="form-group"><br>
+				
+				<label for="email">Email address*: </label>
+				<input type="email" placeholder="john.doe@example.com" 
+					class="form-control" [(ngModel)]="email"
+					name="email" required/><br>
+
+				<label for="">Enter your password*: </label>
+				<input type="password" placeholder="Password" 
+					class="form-control" [(ngModel)]="password" 
+					name="password" required/><br>
+
+			</div>
+			<button type="submit" class="btn btn-success" (click)="signIn(email, password)">Sign In</button>
+			<button type="submit" class="btn btn-danger" (click)="signUp(); isSignUp=true">Sign Up</button>
+		</form>
+
+		<form *ngIf=isSignUp name="signUpForm">
+			<div class="form-group"><br>
+				<label for="name">Your name*: </label>
+				<input type="text" id="name" 
+					placeholder="John Doe" class="form-control" [(ngModel)]="name"
+					name="name" /><br>
+
+
+				<label for="email">Email address*: </label>
+				<input type="email" placeholder="john.doe@example.com" 
+					class="form-control" [(ngModel)]="email"
+					name="email" /><br>
+
+				<label for="">Enter your password*: </label>
+				<input type="password" placeholder="Password" 
+					class="form-control" [(ngModel)]="pass1" 
+					name="pass1" /><br>
+
+				<label for="">Confirm your password*: </label>
+				<input type="password" placeholder="Confirm password" 
+					class="form-control" 
+					[(ngModel)]="pass2" name="pass2" /><br>
+
+			</div>
+
+			<button type="submit" class="btn btn-success" (click)="signIn( email, pass1); isSignUp=false">Sign In</button>
+			<button type="submit" class="btn btn-danger" (click)="signUp(name, email, pass1)">Sign Up</button>
+		</form>
+	</div>
+	
+</div>
