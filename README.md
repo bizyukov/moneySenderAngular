@@ -1,27 +1,90 @@
-# AngularTest
+# Parrot Wings – Angular 8 Finance Client (Demo)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+[![Angular](https://img.shields.io/badge/Angular-8-red.svg)](https://angular.io/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-4-purple.svg)](https://getbootstrap.com/)
+[![Status: Archived](https://img.shields.io/badge/status-archived-lightgrey.svg)](https://github.com/yourusername/parrot-wings-angular)
 
-## Development server
+> **⚠️ EDUCATIONAL DEMO – NOT FOR PRODUCTION**  
+> This repository contains a **simple Angular 8 frontend** for a payment/wallet system (often called "Parrot Wings"). It was built as a **learning exercise or coding challenge** and is preserved **for portfolio reference only**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 📖 Overview
 
-## Code scaffolding
+This application provides a basic interface for:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **User authentication** (sign in / sign up).
+- **Viewing a list of registered users** and their balances.
+- **Creating payment transactions** between users.
+- **Viewing transaction history** with running balance.
 
-## Build
+The frontend communicates with a REST API (not included) and uses JWT tokens stored in `sessionStorage` for authorization.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 🛠️ Technology Stack
 
-## Running unit tests
+- **Framework**: Angular 8
+- **UI**: Bootstrap 4
+- **HTTP**: Angular `HttpClient`
+- **Routing**: Angular Router
+- **State Sharing**: Simple `EventEmitter` service (`ShareService`)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📁 Project Structure (Simplified)
+```bash
+src/app/
+├── components/
+│ ├── login/ # Sign in / sign up form
+│ ├── header/ # Navigation bar with user balance
+│ ├── users/ # User list and search
+│ ├── transactions/ # Transaction history table
+│ └── new-transaction/ # Form to send money
+├── http-request.service.ts # API client (hardcoded localhost URL)
+├── share.service.ts # Shared state between components
+└── app.module.ts
+```
 
-## Running end-to-end tests
+## ✅ Implemented Features
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- **Login / Registration** forms with basic validation.
+- **JWT token** storage and automatic attachment via `HttpHeaders`.
+- **User search** (by username).
+- **Transaction creation** with amount validation.
+- **Transaction history** with colour‑coded amounts (incoming/outgoing).
+- **Repeat transaction** functionality.
 
-## Further help
+## 🚫 Limitations & Security Notes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- **Hardcoded API URL** (`https://localhost:44330`).
+- **No proper error handling** – errors are stringified and shown in an alert.
+- **Outdated Angular version** (8 is EOL).
+- **No route guards** – navigation relies only on token presence.
+- **State management** is rudimentary (no NgRx).
+- **No unit tests** (only auto‑generated files).
+- **Plain HTTP** – JWT sent over unencrypted channel (unless backend enforces HTTPS).
+
+**Do not deploy this application without significant improvements.**
+
+## 📚 Educational Value
+
+This project is a straightforward example of:
+
+- **Angular forms** (template‑driven).
+- **HTTP interceptors** (manual header injection in each request).
+- **Basic routing** and navigation.
+- **Component communication** via a shared service with `EventEmitter`.
+
+It can serve as a **baseline** for comparing with more advanced Angular applications (e.g., Workee, delivcontr) in my portfolio.
+
+## 🔧 How to Run
+
+```bash
+npm install
+ng serve
+```
+Navigate to http://localhost:4200/. The app expects a backend API at https://localhost:44330. You may need to run a compatible backend or mock the responses.
+
+📄 License
+MIT – use freely for learning purposes.
+
+👤 Author & EB‑1A Context
+GitHub: @yourusername
+This repository is part of a documented portfolio showcasing 15+ years of software development, supporting an EB‑1A extraordinary ability visa petition under the original contributions criterion.
+
+“Talk is cheap. Show me the code.” – Linus Torvalds
